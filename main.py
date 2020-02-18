@@ -25,9 +25,11 @@ def draw(display):
 def gen(arr):
     for row in range(WIDTH * 2):
         for column in range(WIDTH * 2):
-            arr[row, column] = Cells.Tile(1, WIDTH)
+            setTile(arr, row, column, 1)
     np.save("grid", arr)
 
+def setTile(arr,x,y,age):
+    arr[x,y] = Cells.Tile(age,WIDTH)
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -44,7 +46,7 @@ grid = np.load("grid.npy",allow_pickle=True)
 
 for row in range(WIDTH*2):
     for column in range(WIDTH*2):
-        grid[row,column] = Cells.Tile(0, WIDTH)
+        setTile(grid, row, column, 0)
 np.save("grid", grid)
 
 
